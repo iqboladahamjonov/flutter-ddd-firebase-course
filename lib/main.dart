@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
-void main() => runApp(MyApp());
+import 'injection.dart';
+
+void main() {
+  //this will invoke the generated initGetIt method, which simply registers every possible dependency under the app
+  configureInjection(Environment.prod);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -9,11 +16,11 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: const Text('Material App Bar'),
         ),
         body: Center(
           child: Container(
-            child: Text('Hello World'),
+            child: const Text('Hello World'),
           ),
         ),
       ),
