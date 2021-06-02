@@ -1,15 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:notes_firebase_ddd_course/domain/auth/user.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/auth_failure.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/i_auth_facade.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/value_objects.dart';
-import 'package:notes_firebase_ddd_course/domain/core/errors.dart';
-
-import '../../domain/auth/i_auth_facade.dart';
+import './firebase_user_mapper.dart';
+import 'package:notes_firebase_ddd_course/domain/auth/i_auth_facade.dart';
 
 //we are tring to resolve IAuthFacade type from get_it service locator but this type is not registered anywhere, so we want to register it, but we cannot straight out register it because this is only an interface. somehow we need to assciate interface of IAuthFacade with its concrete implemention. so that whenever we request iauthfacade we should know that what we want is the implemention of this interface
 @LazySingleton(as: IAuthFacade)
@@ -27,6 +26,7 @@ class FirebaseAuthFacade implements IAuthFacade {
     required EmailAddress emailAddress,
     required Password password,
   }) async {
+    // _firebaseAuth.currentUser().then((value) => value.uid);
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
@@ -88,4 +88,24 @@ class FirebaseAuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  // @override
+  // Stream<Option<User>> getSignedInUser() async* {
+  //   final userStateStream = _firebaseAuth.authStateChanges();
+  //   await for (final user in userStateStream) {
+  //     yield optionOf(user?.toDomain());
+  //   }
+  // }
+
+  @override
+  Future<Option<Person>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
+  // @override
+  // Future<Option<User>> getSignedInUser()=>_firebaseAuth.currentUser().then((firebaseUser)=>optionOf(firebaseUser?toDomain()))
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _firebaseAuth.signOut(),
+        _googleSignIn.signOut(),
+      ]);
 }
