@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PersonTearOff {
   const _$PersonTearOff();
 
-  _Person call({required String id}) {
+  _Person call({required UniqueId id}) {
     return _Person(
       id: id,
     );
@@ -28,7 +28,7 @@ const $Person = _$PersonTearOff();
 
 /// @nodoc
 mixin _$Person {
-  String get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PersonCopyWith<Person> get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ mixin _$Person {
 abstract class $PersonCopyWith<$Res> {
   factory $PersonCopyWith(Person value, $Res Function(Person) then) =
       _$PersonCopyWithImpl<$Res>;
-  $Res call({String id});
+  $Res call({UniqueId id});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$PersonCopyWithImpl<$Res> implements $PersonCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UniqueId,
     ));
   }
 }
@@ -67,7 +67,7 @@ abstract class _$PersonCopyWith<$Res> implements $PersonCopyWith<$Res> {
   factory _$PersonCopyWith(_Person value, $Res Function(_Person) then) =
       __$PersonCopyWithImpl<$Res>;
   @override
-  $Res call({String id});
+  $Res call({UniqueId id});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class __$PersonCopyWithImpl<$Res> extends _$PersonCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UniqueId,
     ));
   }
 }
@@ -98,7 +98,7 @@ class _$_Person implements _Person {
   const _$_Person({required this.id});
 
   @override
-  final String id;
+  final UniqueId id;
 
   @override
   String toString() {
@@ -124,10 +124,10 @@ class _$_Person implements _Person {
 }
 
 abstract class _Person implements Person {
-  const factory _Person({required String id}) = _$_Person;
+  const factory _Person({required UniqueId id}) = _$_Person;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PersonCopyWith<_Person> get copyWith => throw _privateConstructorUsedError;

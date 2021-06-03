@@ -4,6 +4,6 @@ import 'package:notes_firebase_ddd_course/domain/core/value_objects.dart';
 
 extension FirebaseUserDomainX on firebase.User {
   Person toDomain() {
-    return Person(id: UniqueId.fromUniqueString(uid) as String);
+    return Person(id: UniqueId.fromUniqueString(uid));
   }
 }

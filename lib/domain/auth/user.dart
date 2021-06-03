@@ -10,8 +10,6 @@ part 'user.freezed.dart';
 //we create UniqueID value object which will be used for both users and notes later
 @freezed
 abstract class Person with _$Person {
-  const factory Person({
-    required String id,
-  }) = _Person;
+  const factory Person({required UniqueId id}) = _Person;
 }
 //method for converting infrastructure firebase user to our nicely separed domain reprasentation of user, this conversion method shoudl be present in our infrastructe type
