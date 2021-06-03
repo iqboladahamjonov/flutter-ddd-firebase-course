@@ -8,7 +8,6 @@ import 'package:notes_firebase_ddd_course/domain/auth/auth_failure.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/i_auth_facade.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/value_objects.dart';
 import './firebase_user_mapper.dart';
-import 'package:notes_firebase_ddd_course/domain/auth/i_auth_facade.dart';
 
 //we are tring to resolve IAuthFacade type from get_it service locator but this type is not registered anywhere, so we want to register it, but we cannot straight out register it because this is only an interface. somehow we need to assciate interface of IAuthFacade with its concrete implemention. so that whenever we request iauthfacade we should know that what we want is the implemention of this interface
 @LazySingleton(as: IAuthFacade)

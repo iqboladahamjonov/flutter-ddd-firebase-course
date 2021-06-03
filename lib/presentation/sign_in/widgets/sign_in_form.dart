@@ -34,6 +34,7 @@ class SignInForm extends StatelessWidget {
               ? AutovalidateMode.always
               : AutovalidateMode.disabled,
           child: ListView(
+            padding: const EdgeInsets.all(8),
             children: [
               const Text(
                 '📝',
@@ -100,7 +101,7 @@ class SignInForm extends StatelessWidget {
                                   .signInWithEmailAndPasswordPressed(),
                             );
                       },
-                      child: Text('SIGN IN'),
+                      child: const Text('SIGN IN'),
                     ),
                   ),
                   Expanded(
@@ -129,7 +130,11 @@ class SignInForm extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8),
+                const LinearProgressIndicator(),
+              ]
             ],
           ),
         );

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_firebase_ddd_course/application/auth/auth_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:notes_firebase_ddd_course/presentation/routes/router.gr.dart';
-import 'package:notes_firebase_ddd_course/presentation/sign_in/sign_in_page.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -15,6 +14,7 @@ class SplashPage extends StatelessWidget {
           initial: (_) {},
           authenticated: (_) {
             print('I am Authentificated');
+            // context.pushRoute(const SignInRoute());
           },
           unauthenticated: (_) => context.pushRoute(const SignInRoute()),
         );
