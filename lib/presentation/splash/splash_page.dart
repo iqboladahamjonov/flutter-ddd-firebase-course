@@ -7,16 +7,14 @@ import 'package:notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //BlocListener is useful for doind thing which basically cant happen during build, like navigation cant happen after build finishes
+    //BlocListener is useful for doing thing which basically cant happen during build, like navigation cant happen after build finishes
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.map(
           initial: (_) {},
-          authenticated: (_) {
-            print('I am Authentificated');
-            // context.pushRoute(const SignInRoute());
-          },
-          unauthenticated: (_) => context.pushRoute(const SignInRoute()),
+          authenticated: (_) => context.router.replace(
+              const NotesOverviewRoute()), //context.pushRoute(const NotesOverviewRoute()),
+          unauthenticated: (_) => context.router.replace(const SignInRoute()),
         );
       },
       child: const Scaffold(
