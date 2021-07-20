@@ -7,6 +7,7 @@ import 'package:notes_firebase_ddd_course/application/notes/note_watcher/note_wa
 import 'package:notes_firebase_ddd_course/injection.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:notes_firebase_ddd_course/presentation/notes/notes_overview/widgets/notes_overview_body_widget.dart';
+import 'package:notes_firebase_ddd_course/presentation/notes/notes_overview/widgets/uncompleted_switch.dart';
 import 'package:notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 
 class NotesOverviewPage extends StatelessWidget {
@@ -66,10 +67,7 @@ class NotesOverviewPage extends StatelessWidget {
               },
             ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.indeterminate_check_box),
-                onPressed: () {},
-              )
+              UncompletedSwitch(),
             ],
           ),
           body: const NotesOverviewBody(),
