@@ -12,6 +12,7 @@ class CriticalFailureDisplay extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        // ignore: avoid_redundant_argument_values
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
@@ -28,7 +29,7 @@ class CriticalFailureDisplay extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              print('Sending Email');
+              // print('Sending Email');
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,

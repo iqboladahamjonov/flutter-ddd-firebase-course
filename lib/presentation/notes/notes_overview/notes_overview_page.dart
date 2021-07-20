@@ -32,7 +32,9 @@ class NotesOverviewPage extends StatelessWidget {
           BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => {
               state.maybeMap(
-                unauthenticated: (_) => context.pushRoute(const SignInRoute()),
+                unauthenticated: (_) =>
+                    context.router.replace(const SignInRoute()),
+                //context.pushRoute(const SignInRoute()),
                 orElse: () {},
               )
             },
@@ -73,7 +75,7 @@ class NotesOverviewPage extends StatelessWidget {
           body: const NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
         ),
       ),

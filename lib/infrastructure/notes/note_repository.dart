@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kt_dart/src/collection/kt_list.dart';
 import 'package:dartz/dartz.dart';
 import 'package:notes_firebase_ddd_course/domain/notes/i_notes_repository.dart';
 import 'package:notes_firebase_ddd_course/domain/notes/note_failure.dart';

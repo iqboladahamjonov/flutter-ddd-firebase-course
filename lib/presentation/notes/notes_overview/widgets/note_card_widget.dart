@@ -59,7 +59,7 @@ class NoteCard extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Selected Text"),
+            title: const Text("Selected Text"),
             content: Text(
               note.body.getOrCrash(),
               maxLines: 3,
