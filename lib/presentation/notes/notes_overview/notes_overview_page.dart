@@ -19,8 +19,10 @@ class NotesOverviewPage extends StatelessWidget {
         BlocProvider<NoteWatcherBloc>(
           create: (context) => getIt<NoteWatcherBloc>()
             ..add(const NoteWatcherEvent.watchAllStarted()),
+          lazy: false,
         ),
         BlocProvider<NoteActorBloc>(
+          lazy: false,
           create: (context) => getIt<NoteActorBloc>(),
         ),
       ],
@@ -29,8 +31,7 @@ class NotesOverviewPage extends StatelessWidget {
           BlocListener<AuthBloc, AuthState>(
             listener: (context, state) => {
               state.maybeMap(
-                unauthenticated: (_) =>
-                    context.router.replace(const SignInRoute()),
+                unauthenticated: (_) => context.pushRoute(const SignInRoute()),
                 orElse: () {},
               )
             },

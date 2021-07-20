@@ -9,17 +9,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  another_flushbar: ^1.10.22
+  another_flushbar: ^1.10.24
   auto_route: ^2.2.0
-  cloud_firestore: ^2.2.2
+  cloud_firestore: ^2.4.0
   dartz: ^0.10.0-nullsafety.2
-  firebase_auth: ^1.1.4
-  firebase_core: ^1.1.1
+  firebase_auth: ^3.0.1
+  firebase_core: ^1.4.0
   flutter_bloc: ^7.0.1
-  freezed_annotation: ^0.14.1
-  get_it: ^7.1.3
-  google_sign_in: ^5.0.2
-  injectable: ^1.4.0
+  freezed_annotation: ^0.14.2
+  get_it: ^7.2.0
+  google_sign_in: ^5.0.5
+  injectable: ^1.4.1
   json_annotation: ^4.0.1
   kt_dart: ^0.9.1
   rxdart: ^0.27.1
@@ -28,8 +28,8 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^2.1.0
   build_runner: null
-  freezed: ^0.14.1+3
-  injectable_generator: ^1.4.0
+  freezed: ^0.14.2
+  injectable_generator: ^1.4.1
   json_serializable: ^4.1.3
   lint: ^1.5.3
 
