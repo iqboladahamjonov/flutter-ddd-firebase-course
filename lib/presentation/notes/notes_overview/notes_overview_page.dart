@@ -33,7 +33,7 @@ class NotesOverviewPage extends StatelessWidget {
             listener: (context, state) => {
               state.maybeMap(
                 unauthenticated: (_) =>
-                    context.router.replace(const SignInRoute()),
+                    context.router.push(const SignInRoute()),
                 //context.pushRoute(const SignInRoute()),
                 orElse: () {},
               )
@@ -74,7 +74,9 @@ class NotesOverviewPage extends StatelessWidget {
           ),
           body: const NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(NoteFormRoute());
+            },
             child: const Icon(Icons.add),
           ),
         ),
