@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:notes_firebase_ddd_course/domain/auth/user.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:notes_firebase_ddd_course/domain/auth/auth_failure.dart';
@@ -34,7 +33,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -56,7 +55,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' ||
           e.code == 'ERROR_USER_NOT_FOUND') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
@@ -83,21 +82,14 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
 
-  // @override
-  // Stream<Option<User>> getSignedInUser() async* {
-  //   final userStateStream = _firebaseAuth.authStateChanges();
-  //   await for (final user in userStateStream) {
-  //     yield optionOf(user?.toDomain());
-  //   }
-  // }
-
   @override
-  Future<Option<Person>> getSignedInUser() async =>
+  // Future<Option<Person>> getSignedInUser() async =>
+  Future<Option<User>> getSignedInUser() async =>
       optionOf(_firebaseAuth.currentUser?.toDomain());
   // @override
   // Future<Option<User>> getSignedInUser()=>_firebaseAuth.currentUser().then((firebaseUser)=>optionOf(firebaseUser?toDomain()))

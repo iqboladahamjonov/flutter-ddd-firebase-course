@@ -34,10 +34,11 @@ class ColorField extends StatelessWidget {
                     side: state.note.color.value.fold(
                       (_) => BorderSide.none,
                       (color) => color == itemColor
-                          ? BorderSide(width: 1.5)
+                          ? const BorderSide(width: 1.5)
                           : BorderSide.none,
                     ),
                   ),
+                  // ignore: sized_box_for_whitespace
                   child: Container(
                     width: 50,
                     height: 50,
