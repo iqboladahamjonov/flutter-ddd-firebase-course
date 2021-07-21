@@ -17,14 +17,14 @@ class CriticalFailureDisplay extends StatelessWidget {
         children: [
           const Text(
             '😭 Big Failure',
-            style: TextStyle(fontSize: 100),
+            style: TextStyle(fontSize: 50),
           ),
           Text(
             failure.maybeMap(
               insufficientPermission: (_) => 'Insufficient Permissions',
               orElse: () => 'Unexpected Error. \nPlease contact support.',
             ),
-            style: const TextStyle(fontSize: 24),
+            style: const TextStyle(fontSize: 20),
             textAlign: TextAlign.center,
           ),
           TextButton(

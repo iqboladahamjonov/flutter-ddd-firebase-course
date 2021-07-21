@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_firebase_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:notes_firebase_ddd_course/domain/notes/note.dart';
 import 'package:notes_firebase_ddd_course/injection.dart';
+import 'package:notes_firebase_ddd_course/presentation/notes/note_form/widgets/body_field_widget.dart';
 import 'package:notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 
 class NoteFormPage extends StatelessWidget {
@@ -108,12 +109,28 @@ class NoteFormPageScaffold extends StatelessWidget {
             }),
         actions: [
           IconButton(
-            icon: Icon(Icons.check),
+            icon: const Icon(Icons.check),
             onPressed: () {
               context.read<NoteFormBloc>().add(const NoteFormEvent.saved());
             },
           )
         ],
+      ),
+      body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
+        builder: (context, state) {
+          return Form(
+              autovalidateMode: state.showErrorMessages
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const BodyField(),
+                  ],
+                ),
+              ));
+        },
       ),
     );
   }
