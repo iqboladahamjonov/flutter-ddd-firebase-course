@@ -57,10 +57,10 @@ abstract class NoteDto implements _$NoteDto {
   }
 }
 
-class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
+class ServerTimestampConverter implements JsonConverter<FieldValue, dynamic> {
   const ServerTimestampConverter();
   @override
-  FieldValue fromJson(Object json) {
+  FieldValue fromJson(dynamic json) {
     return FieldValue.serverTimestamp();
   }
 
